@@ -1,7 +1,7 @@
 #Импортируем sentry и bottle
 import sentry_sdk
 import os
-from bottle import Bottle, request, route, run, response
+from bottle import Bottle, request, route, run, response, HTTPResponse
 from sentry_sdk.integrations.bottle import BottleIntegration
 
 #Инициализируем sentry с нашими данными
@@ -26,22 +26,23 @@ def index():
     </head>
     <body>
         <h1>Ниже выберете нужный вариант</h1>
-        <h2><a href='http://localhost:8080/success'>Соединение установлено</a></h2>
-        <h2><a href='http://localhost:8080/fail'>Ошибка сервера</a></h2>
+        <h2><a href='https://polar-forest-03681.herokuapp.com/success'>Соединение установлено</a></h2>
+        <h2><a href='https://polar-forest-03681.herokuapp.com/fail'>Ошибка сервера</a></h2>
     </body>
 </html>
     """
     return htmlCode
+
 #Страница со статусом 200ОК
-@app.route('/success')
+@app.route('/success', method='GET')
 def successMes():
-    return 'HTTP статус - {status}'.format(status=response.status)
+    return HTTPResponse(status=200, body="200 OK")
 
 #Страница с ошибкой
-@app.route('/fail')
+@app.route('/fail', method='GET')
 def failMess():
     raise RuntimeError("There is an error! Vol.2")
-    return 
+    return HTTPResponse(status=500, body="Fail page") 
 
 
 if os.environ.get("APP_LOCATION") == "heroku":
