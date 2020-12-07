@@ -1,4 +1,6 @@
-Приложение с 2-я ответами - 200OK and 500 Err.
+Простое приложение, которое даёт 2 ответа- 200OK and 500 Err. В случае ошибки передаёт логи в sentry.io
+Приложение развернуто на Heroku. Ссылка на него: https://polar-forest-03681.herokuapp.com
+
 
 LICENSE
 MIT License  
