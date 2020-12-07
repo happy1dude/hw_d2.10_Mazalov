@@ -6,7 +6,7 @@ from sentry_sdk.integrations.bottle import BottleIntegration
 
 #Инициализируем sentry с нашими данными
 sentry_sdk.init(
-    dsn="https://957ad00809604c76afc011d7b8b34f31@o485517.ingest.sentry.io/5540996",
+    dsn="https://тутможетбытьвашID@o485517.ingest.sentry.io/5540996",
     integrations=[BottleIntegration()]
 )
 
